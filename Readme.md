@@ -13,7 +13,7 @@ For generating privacy policy for apps, <a href="https://app-privacy-policy-gene
 <br>
 
 <div align="center"><a href="https://github.com/PhoenixR49/privacy-builder">
-  <img src="https://img.shields.io/github/followers/digitalmalayali.svg?style=social&amp;label=Follow" alt="GitHub followers">
+  <img src="https://img.shields.io/github/followers/PhoenixR49.svg?style=social&amp;label=Follow" alt="GitHub followers">
 </a>
 
 </div>
