@@ -20,7 +20,7 @@ For generating privacy policy for apps, <a href="https://app-privacy-policy-gene
 
 ## Web App
 
-[![Website](https://img.shields.io/website?url=https%3A%2F%2Fphoenixr49.github.io%2Fprivacy-builder&logo=github&label=GitHub%20Page)](https://phoenixr49.github.io/privacy-builder)
+[![GitHub deployments](https://img.shields.io/github/deployments/PhoenixR49/privacy-builder/Production?logo=vercel&label=Vercel)](https://phoenixr49.github.io/privacy-builder)
 
 ## Author & Contributors 🙏
 
