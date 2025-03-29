@@ -1,0 +1,32 @@
+@charset "utf-8";
+
+// Import a Font
+@import url("https://fonts.bunny.net/css?family=arimo:400,400i,700,700i");
+
+// Set your brand colors
+$white: #fff;
+$blue: #00b4ff;
+
+// Update Bulma's global variables
+$family-sans-serif: "Arimo", sans-serif;
+$primary: $blue;
+$link: $blue;
+$widescreen-enabled: false;
+$fullhd-enabled: true;
+
+// Update some of Bulma's component variables
+$body-background-color: $white;
+$control-border-width: 2px;
+$input-border-color: transparent;
+$input-shadow: none;
+
+// Import only what you need from Bulma
+@import "../node_modules/bulma/sass/utilities";
+@import "../node_modules/bulma/sass/base";
+@import "../node_modules/bulma/sass/elements";
+@import "../node_modules/bulma/sass/form";
+@import "../node_modules/bulma/sass/layout/hero.scss";
+@import "../node_modules/bulma/sass/layout/section.scss";
+@import "../node_modules/bulma/sass/components/dropdown.scss";
+@import "../node_modules/bulma/sass/components/modal.scss";
+@import "../node_modules/bulma/sass/grid/columns.scss";
