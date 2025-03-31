@@ -21,13 +21,15 @@ const app = new Vue({
 			effectiveFromDate: new Date().toISOString().slice(0, 10),
 			thirdPartyServices: thirdPartyServicesJsonArray,
 			personalData: personalDataJsonArray,
+			personalDataCollectionMethods: dataCollectionMethodsJsonArray,
+			personalDataUsage: personalDataUsageJsonArray,
 			showPersonalDropdown: false,
 			showPrivacyModal: false,
 			showDisclaimerModal: false,
 			hasThirdPartyServicesSelected: true,
 			contentRenderType: 1,
 			wizardStep: 1,
-			totalWizardSteps: 4,
+			totalWizardSteps: 7,
 			isRequired: false,
 		};
 	},
@@ -112,6 +114,26 @@ const app = new Vue({
 
 			return listOfEnabledPersonalData.length > 0;
 		},
+		checkForPersonalDataCollectionMethodsEnabled() {
+			const listOfEnabledPersonalDataCollectionMethods = [];
+			for (const item of this.personalDataCollectionMethods) {
+				if (item[item.model] === true) {
+					listOfEnabledPersonalDataCollectionMethods.push(true);
+				}
+			}
+
+			return listOfEnabledPersonalDataCollectionMethods.length > 0;
+		},
+		checkForPersonalDataUsageEnabled() {
+			const listOfEnabledPersonalDataUsage = [];
+			for (const item of this.personalDataUsage) {
+				if (item[item.model] === true) {
+					listOfEnabledPersonalDataUsage.push(true);
+				}
+			}
+
+			return listOfEnabledPersonalDataUsage.length > 0;
+		},
 		toggleState(item) {
 			const state = item.model;
 
@@ -120,6 +142,8 @@ const app = new Vue({
 			// Toggle the state
 			Vue.set(thirdPartyServicesJsonArray, item.model, !item[state]);
 			Vue.set(personalDataJsonArray, item.model, !item[state]);
+			Vue.set(dataCollectionMethodsJsonArray, item.model, !item[state]);
+			Vue.set(personalDataUsageJsonArray, item.model, !item[state]);
 		},
 		getHtml(id, target) {
 			const content = getContent(id);
@@ -170,6 +194,8 @@ const app = new Vue({
 			this.hasThirdPartyServicesSelected =
 				this.checkForThirdPartyServicesEnabled();
 			this.hasPersonalDataSelected = this.checkForPersonalDataEnabled();
+			this.hasPersonalDataCollectionMethodSelected = this.checkForPersonalDataCollectionMethodsEnabled();
+			this.hasPersonalDataUsage = this.checkForPersonalDataUsageEnabled();
 			this.contentRenderType = 1;
 			this.showPrivacyModal = !this.showPrivacyModal;
 		},

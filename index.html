@@ -39,7 +39,6 @@
 	<link rel="icon" sizes="192x192" href="images/android-desktop.png" />
 
 	<!-- Add to homescreen for Safari on iOS-->
-
 	<meta name="apple-mobile-web-app-capable" content="yes" />
 	<meta name="apple-mobile-web-app-status-bar-style" content="black" />
 	<meta name="apple-mobile-web-app-title" content="Privacy Builder" />
@@ -117,7 +116,7 @@
 							alt="Illustration of a setup wizard" src="images/app_graphics/step_1.svg" /></div>
 					<div class="column">
 						<div class="column box scrollable">
-							<h2>General information</h2>
+							<h2>General Information</h2>
 							<div class="control is-expanded">
 								<label class="help form-label" for="webName">Website Name</label>
 								<input class="input" type="text" required id="webName" v-model="webName"
@@ -207,7 +206,7 @@
 								<input type="checkbox" :id="'list-switch-' + item.model" v-model="item[item.model]" />
 								<label :for="'list-switch-' + item.model"><img class="thirdparty-logo" :src="item.logo"
 										:alt="item.name" />
-									<span class="thirdparty-text">{{ item.name }}</span>
+									<span class="thirdParty-text">{{ item.name }}</span>
 								</label>
 							</a>
 						</div>
@@ -234,7 +233,7 @@
 									<input type="checkbox" :id="'list-switch-' + item.model"
 										v-model="item[item.model]" />
 									<label :for="'list-switch-' + item.model">
-										<span class="personaldata-text">{{ item.name }}</span>
+										<span class="personalData-text">{{ item.name }}</span>
 									</label>
 								</li>
 							</ul>
@@ -251,7 +250,63 @@
 			<section class="section" id="step-5" v-if="wizardStep==5">
 				<div class="columns">
 					<div class="column is-6 is-information"><img class="center-block sidebar-img"
-							alt="Illustration to finish" src="images/app_graphics/step_5.svg" /></div>
+							alt="Illustration of personal data collection" src="images/app_graphics/step_5.svg" /></div>
+					<div class="column">
+						<div class="column box scrollable">
+							<h2>Personal Data Collection Methods</h2>
+							<ul>
+								<li v-for="item in personalDataCollectionMethods">
+									<input type="checkbox" :id="'list-switch-' + item.model"
+										v-model="item[item.model]" />
+									<label :for="'list-switch-' + item.model">
+										<span class="personalDataCollectionMethods-text">{{ item.name }}</span>
+										<p>{{ item.description }}</p>
+									</label>
+								</li>
+							</ul>
+						</div>
+						<a class="button is-primary" @click="prevStep()" rel="noopener noreferrer">Prev</a>
+						<a class="button is-primary" @click="nextStep()" rel="noopener noreferrer">Next</a>
+						<div class="box">
+							<p class="has-text-grey-light">If you use other personal data collection methods that is not
+								mentioned
+								here, you can add it to the generated policy.</p>
+						</div>
+					</div>
+				</div>
+			</section>
+			<section class="section" id="step-6" v-if="wizardStep==6">
+				<div class="columns">
+					<div class="column is-6 is-information"><img class="center-block sidebar-img"
+							alt="Illustration of personal data collection" src="images/app_graphics/step_6.svg" /></div>
+					<div class="column">
+						<div class="column box scrollable">
+							<h2>Personal Data Usage</h2>
+							<ul>
+								<li v-for="item in personalDataUsage">
+									<input type="checkbox" :id="'list-switch-' + item.model"
+										v-model="item[item.model]" />
+									<label :for="'list-switch-' + item.model">
+										<span class="personalDataUsage-text">{{ item.name }}</span>
+										<p>{{ item.description }}</p>
+									</label>
+								</li>
+							</ul>
+						</div>
+						<a class="button is-primary" @click="prevStep()" rel="noopener noreferrer">Prev</a>
+						<a class="button is-primary" @click="nextStep()" rel="noopener noreferrer">Next</a>
+						<div class="box">
+							<p class="has-text-grey-light">If you use other personal data collection methods that is not
+								mentioned
+								here, you can add it to the generated policy.</p>
+						</div>
+					</div>
+				</div>
+			</section>
+			<section class="section" id="step-7" v-if="wizardStep==7">
+				<div class="columns">
+					<div class="column is-6 is-information"><img class="center-block sidebar-img"
+							alt="Illustration to finish" src="images/app_graphics/last_step.svg" /></div>
 					<div class="column">
 						<div class="box">
 							<ol>
@@ -342,11 +397,8 @@
 							<p>You directly provide {{usOrMe}} with most of the data we collect. {{iOrWe}} collect data
 								and process data when you:</p>
 							<ul>
-								<li>Register online or place an order for any of our products or services.</li>
-								<li>Voluntarily complete a customer survey or provide feedback on any of our message
-									boards or via email.</li>
-								<li>Use or view our website via your browser’s cookies.</li>
-								<li>[Add any other ways your company collects data]</li>
+								<li v-if="item[item.model]" v-for="item in personalDataCollectionMethods">{{item.name}}
+								</li>
 							</ul>
 							<p>{{iOrWe | capitalize}} may also receive your data indirectly from the following sources:
 							</p>
@@ -356,10 +408,8 @@
 							<h2 id="how-will-we-use-your-data">How will we use your data?</h2>
 							<p>{{iOrWe | capitalize}} collects your data so that we can:</p>
 							<ul>
-								<li>Process your order and manage your account.</li>
-								<li>Email you with special offers on other products and services we think you might
-									like.</li>
-								<li>[Add how else your company uses data]</li>
+								<li v-if="item[item.model]" v-for="item in personalDataUsage">{{item.name}}
+								</li>
 							</ul>
 							<p>If you agree, {{iOrWe}} will share your data with our partner companies so that they may
 								offer you their products and services.</p>
@@ -458,7 +508,8 @@
 							<h2 id="changes-to-our-privacy-policy">Changes to our privacy policy</h2>
 							<p>{{iOrWe | capitalize}} keeps its privacy policy under regular review and places any
 								updates on this web page. This privacy policy was last updated on
-								<em><b>{{effectiveFromDate}}</b></em>.</p>
+								<em><b>{{effectiveFromDate}}</b></em>.
+							</p>
 							<h2 id="how-to-contact-us">How to contact us</h2>
 							<p>If you have any questions about {{myOrOur}} privacy policy, the data we hold on you, or
 								you would like to exercise one of your data protection rights, please do not hesitate to
@@ -528,9 +579,8 @@
 								email at <a :href="'mailto:' + email">{{email}}</a>.</p>
 							<p>{{companyAddIn}}</p>
 							<br />
-							<p>This privacy policy page is generated by <a
-									href="https://privacy-builder.vercel.app/" target="_blank"
-									rel="noopener noreferrer">Privacy Builder</a>.</p>
+							<p>This privacy policy page is generated by <a href="https://privacy-builder.vercel.app/"
+									target="_blank" rel="noopener noreferrer">Privacy Builder</a>.</p>
 						</div>
 						<textarea class="textarea" id="privacy_txtarea" onclick="this.focus();this.select()"
 							readonly="readonly" v-show="contentRenderType==2"></textarea>
@@ -575,19 +625,20 @@
 		</div>
 	</div>
 
-	<script src="/node_modules/marked/marked.min.js"></script>
 	<script src="/node_modules/clipboard/dist/clipboard.min.js"></script>
 	<script src="/node_modules/turndown/dist/turndown.js"></script>
 	<script src="https://cdn.jsdelivr.net/npm/vue@2.6.14"></script>
-	<script src="https://cdn.jsdelivr.net/particles.js/2.0.0/particles.min.js"></script>
-	<script src="js/json/personaldata.js"></script>
-	<script src="js/json/thirdpartyservices.js"></script>
+	<script src="/node_modules/particles.js/particles.js"></script>
+	<script src="js/json/personal_data_collection_methods.js"></script>
+	<script src="js/json/personal_data.js"></script>
+	<script src="js/json/personal_data_usage.js"></script>
+	<script src="js/json/third_party_services.js"></script>
 	<script src="js/utils.js"></script>
 	<script src="js/main.js"></script>
 
 	<script>
-		var btn = document.getElementById("copybtn");
-		var clipboard = new ClipboardJS(btn);
+		const btn = document.getElementById("copybtn");
+		const clipboard = new ClipboardJS(btn);
 
 		clipboard.on("success", function (e) {
 			console.info("Action:", e.action);
