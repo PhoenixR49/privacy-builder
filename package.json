@@ -20,9 +20,6 @@
 	"homepage": "https://github.com/PhoenixR49/privacy-builder#readme",
 	"dependencies": {
 		"@types/node-sass": "^4.11.8",
-		"bulma": "^1.0.3",
-		"clipboard": "^2.0.11",
-		"particles.js": "^2.0.0",
-		"turndown": "^7.1.2"
+		"bulma": "^1.0.3"
 	}
 }
