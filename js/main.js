@@ -27,6 +27,9 @@ const app = new Vue({
 			showPrivacyModal: false,
 			showDisclaimerModal: false,
 			hasThirdPartyServicesSelected: true,
+			hasPersonalDataSelected: true,
+			hasPersonalDataCollectionMethodSelected: true,
+			hasPersonalDataUsageSelected: true,
 			contentRenderType: 1,
 			wizardStep: 1,
 			totalWizardSteps: 7,
@@ -40,8 +43,9 @@ const app = new Vue({
 		},
 	},
 	methods: {
-		preview(id) {
+		preview() {
 			this.contentRenderType = 1;
+			btn.setAttribute("data-clipboard-target", "#privacy_content");
 		},
 		nextStep() {
 			if (this.wizardStep <= this.totalWizardSteps) {
@@ -150,6 +154,7 @@ const app = new Vue({
 			const title = getTitle(id);
 			const rawHTML = getRawHTML(content, title);
 			this.contentRenderType = 2;
+			btn.setAttribute("data-clipboard-target", "#privacy_txtarea");
 			loadInTextView(target, rawHTML);
 		},
 		getMarkdown(id, target) {
@@ -158,6 +163,7 @@ const app = new Vue({
 			const rawHTML = getRawHTML(content, title);
 			const markdown = convertHtmlToMd(rawHTML);
 			this.contentRenderType = 2;
+			btn.setAttribute("data-clipboard-target", "#privacy_txtarea");
 			loadInTextView(target, markdown);
 		},
 		generate() {
@@ -194,8 +200,10 @@ const app = new Vue({
 			this.hasThirdPartyServicesSelected =
 				this.checkForThirdPartyServicesEnabled();
 			this.hasPersonalDataSelected = this.checkForPersonalDataEnabled();
-			this.hasPersonalDataCollectionMethodSelected = this.checkForPersonalDataCollectionMethodsEnabled();
-			this.hasPersonalDataUsage = this.checkForPersonalDataUsageEnabled();
+			this.hasPersonalDataCollectionMethodSelected =
+				this.checkForPersonalDataCollectionMethodsEnabled();
+			this.hasPersonalDataUsageSelected =
+				this.checkForPersonalDataUsageEnabled();
 			this.contentRenderType = 1;
 			this.showPrivacyModal = !this.showPrivacyModal;
 		},

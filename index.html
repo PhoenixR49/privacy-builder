@@ -313,7 +313,7 @@
 								This Privacy Policy Generator is completely
 								<b>FREE</b>.
 								<p>
-									If you are able to, then consider supporting us by:
+									If you are able to, then consider supporting {{ meOrUs }} by:
 									<li>
 										<a href="https://github.com/PhoenixR49/privacy-builder" target="_blank"
 											rel="noopener noreferrer">Giving a star for our GitHub repo &#11088;</a>
@@ -373,225 +373,247 @@
 								used.</p>
 							<p>Topics:</p>
 							<ul>
-								<li><a href="#what-data-do-we-collect">What data do we collect?</a></li>
-								<li><a href="#how-do-we-collect-your-data">How do we collect your data?</a></li>
-								<li><a href="#how-will-we-use-your-data">How will we use your data?</a></li>
-								<li><a href="#how-do-we-store-your-data">How do we store your data?</a></li>
+								<li v-if="personalData.some(item => item[item.model])"><a
+										href="#what-data-do-{{ iOrWe }}-collect">What data do {{
+										iOrWe }} collect?</a>
+								</li>
+								<li v-if="personalDataCollectionMethods.some(item => item[item.model])"><a
+										href="#how-do-{{ iOrWe }}-collect-your-data">How do {{ iOrWe }} collect your
+										data?</a>
+								</li>
+								<li><a href="#how-will-{{ iOrWe }}-use-your-data">How will {{ iOrWe }} use your
+										data?</a></li>
+								<li><a href="#how-do-{{ iOrWe }}-store-your-data">How do {{ iOrWe }} store your
+										data?</a></li>
 								<li><a href="#marketing">Marketing</a></li>
 								<li><a href="#what-are-your-data-protection-rights">What are your data protection
 										rights?</a></li>
 								<li><a href="#what-are-cookies">What are cookies?</a></li>
-								<li><a href="#how-do-we-use-cookies">How do we use cookies?</a></li>
-								<li><a href="#what-types-of-cookies-do-we-use">What types of cookies do we use?</a></li>
+								<li><a href="#how-do-{{ iOrWe }}-use-cookies">How do {{ iOrWe }} use cookies?</a></li>
+								<li><a href="#what-types-of-cookies-do-{{ iOrWe }}-use">What types of cookies do {{
+										iOrWe }}
+										use?</a></li>
 								<li><a href="#how-to-manage-cookies">How to manage your cookies</a></li>
 								<li><a href="#privacy-policies-of-other-websites">Privacy policies of other websites</a>
 								</li>
 								<li><a href="#changes-to-our-privacy-policy">Changes to our privacy policy</a></li>
-								<li><a href="#how-to-contact-us">How to contact us</a></li>
+								<li><a href="#how-to-contact-{{ meOrUs }}">How to contact {{ meOrUs }}</a></li>
 							</ul>
-							<h2 id="what-data-do-we-collect">What data do we collect?</h2>
+
+							<h2 id="what-data-do-{{ iOrWe }}-collect">What data do {{ iOrWe }} collect?
+								<div v-if="hasPersonalDataSelected">
+							</h2>
 							<p>{{ iOrWe | capitalize }} collects the following data:</p>
 							<ul>
 								<li v-if="item[item.model]" v-for="item in personalData">{{ item.name }}</li>
 							</ul>
-							<h2 id="how-do-we-collect-your-data">How do we collect your data?</h2>
-							<p>You directly provide {{ usOrMe }} with most of the data we collect. {{ iOrWe }} collect
-								data
-								and process data when you:</p>
-							<ul>
-								<li v-if="item[item.model]" v-for="item in personalDataCollectionMethods">{{ item.name
-									}}
-								</li>
-							</ul>
-							<p>{{ iOrWe | capitalize }} may also receive your data indirectly from the following
-								sources:</p>
-							<ul>
-								<li>[Add any indirect source of data your company has]</li>
-							</ul>
-							<h2 id="how-will-we-use-your-data">How will we use your data?</h2>
-							<p>{{ iOrWe | capitalize }} collects your data so that we can:</p>
-							<ul>
-								<li v-if="item[item.model]" v-for="item in personalDataUsage">{{ item.name }}
-								</li>
-							</ul>
-							<p>If you agree, {{ iOrWe }} will share your data with our partner companies so that they
-								may
-								offer you their products and services.</p>
-							<ul>
-								<ul v-if="item[item.model] &amp;&amp; item.link.privacy &amp;&amp; item.link.tos"
-									v-for="item in thirdPartyServices">
-									<li>
-										<a :href="item.link.privacy" target="_blank" rel="noopener noreferrer">Privacy
-											Policy</a>
-									</li>
-									<li>
-										<a :href="item.link.tos" target="_blank" rel="noopener noreferrer">Terms of
-											Service</a>
-									</li>
-								</ul>
-							</ul>
-							<p>When {{ iOrWe }} processes your order, it may send your data to, and also use the
-								resulting
-								information from, credit reference agencies to prevent fraudulent purchases.</p>
-							<h2 id="how-do-we-store-your-data">How do we store your data?</h2>
-							<p>{{ iOrWe | capitalize }} securely stores your data at [enter the location and describe
-								security precautions taken].</p>
-							<p>{{ iOrWe | capitalize }} will keep your [enter type of data] for [enter time period].
-								Once
-								this time period has expired, we will delete your data by [enter how you delete users’
-								data].</p>
-							<h2 id="marketing">Marketing</h2>
-							<p>{{ iOrWe | capitalize }} would like to send you information about products and services
-								of
-								ours that we think you might like, as well as those of our partner companies.</p>
-							<ul>
-								<li>[List organizations that will receive data]</li>
-							</ul>
-							<p>If you have agreed to receive marketing, you may always opt out at a later date.</p>
-							<p>You have the right at any time to stop {{ usOrMe }} from contacting you for marketing
-								purposes.</p>
-							<p>If you no longer wish to be contacted for marketing purposes, please <a
-									href="https://example.com">click here</a>.</p>
-							<h2 id="what-are-your-data-protection-rights">What are your data protection rights?</h2>
-							<p>{{ iOrWe | capitalize }} would like to make sure you are fully aware of all of your data
-								protection rights. Every user is entitled to the following:</p>
-							<p><strong>The right to access</strong> – You have the right to ask {{ usOrMe }} for copies
-								of
-								your personal data. We may charge you a small fee for this service.</p>
-							<p><strong>The right to rectification</strong> – You have the right to ask {{ usOrMe }} to
-								correct any information you believe is inaccurate. You also have the right to request
-								Our Company to complete the information you believe is incomplete.</p>
-							<p><strong>The right to erasure</strong> – You have the right to ask {{ usOrMe }} for erase
-								your personal data, under certain conditions.</p>
-							<p><strong>The right to restrict processing</strong> – You have the right to ask {{ usOrMe
-								}}
-								for restrict the processing of your personal data, under certain conditions.</p>
-							<p><strong>The right to object to processing</strong> – You have the right to object to the
-								processing of your personal data by {{ usOrMe }}, under certain conditions.</p>
-							<p><strong>The right to data portability</strong> – You have the right to ask {{ usOrMe }}
-								to
-								transfer the data we have collected to another organization, or directly to you, under
-								certain conditions.</p>
-							<p>If you make a request, {{ iOrWe }} have one month to respond to you. If you would like to
-								exercise any of these rights, please contact {{ usOrMe }} at:</p>
-							<p>Email: {{ email }}</p>
-							<p>{{ phoneIn }}</p>
-							<p>{{ companyAddIn }}</p>
-							<h2 id="what-are-cookies">What are cookies?</h2>
-							<p>Cookies are text files placed on your computer to collect standard Internet log
-								information and visitor behavior information. When you visit {{ myOrOur }} website, we
-								may
-								collect information from you automatically through cookies or similar technology</p>
-							<p>For further information, visit <a
-									href="https://allaboutcookies.org">allaboutcookies.org</a>.</p>
-							<h2 id="how-do-we-use-cookies">How do we use cookies?</h2>
-							<p>We uses cookies in a range of ways to improve your experience on our website, including:
-							</p>
-							<ul>
-								<li>Keeping you signed in</li>
-								<li>Understanding how you use our website</li>
-								<li>[Add any uses your company has for cookies]</li>
-							</ul>
-							<h2 id="what-types-of-cookies-do-we-use">What types of cookies do we use?</h2>
-							<p>There are a number of different types of cookies, however, our website uses:</p>
-							<ul>
-								<li>Functionality – We uses these cookies so that we recognize you on our website and
-									remember your previously selected preferences. These could include what language you
-									prefer and location you are in. A mix of first-party and third-party cookies are
-									used.</li>
-								<li>Advertising – We uses these cookies to collect information about your visit to our
-									website, the content you viewed, the links you followed and information about your
-									browser, device, and your IP address. Sometimes {{ iOrWe }} shares some limited
-									aspects of this data with third parties for advertising purposes. {{ iOrWe |
-									capitalize }} may also share online data collected through cookies with our
-									advertising partners. This means that when you visit another website, you may be
-									shown advertising based on your browsing patterns on our website.</li>
-								<li>[Add any other types of cookies your company uses]</li>
-							</ul>
-							<h2 id="how-to-manage-cookies">How to manage cookies</h2>
-							<p>You can set your browser not to accept cookies, and the above website tells you how to
-								remove cookies from your browser. However, in a few cases, some of our website features
-								may not function as a result.</p>
-							<h2 id="privacy-policies-of-other-websites">Privacy policies of other websites</h2>
-							<p>{{ devOrCompanyName }} website contains links to other websites. {{ myOrOur | capitalize
-								}}
-								privacy policy applies only to {{ myOrOur }} website, so if you click on a link to
-								another
-								website, you should read their privacy policy.</p>
-							<h2 id="changes-to-our-privacy-policy">Changes to our privacy policy</h2>
-							<p>{{ iOrWe | capitalize }} keeps its privacy policy under regular review and places any
-								updates on this web page. This privacy policy was last updated on
-								<em><b>{{ effectiveFromDate }}</b></em>.
-							</p>
-							<h2 id="how-to-contact-us">How to contact us</h2>
-							<p>If you have any questions about {{ myOrOur }} privacy policy, the data we hold on you, or
-								you would like to exercise one of your data protection rights, please do not hesitate to
-								contact us.</p>
-							<p>Email us at: {{ email }}</p>
-							<p>{{ phoneIn }}</p>
-							<p>{{ companyAddIn }}</p>
+							<div v-else>
+								<p>{{ iOrWe | capitalize }} do not collect any of your personal data.</p>
+							</div>
 
-							<strong>Privacy Policy</strong>
-							<p>{{ devOrCompanyName }} operates the website "{{ webName }}" at {{ siteURL }}. {{ iOrWe |
-								capitalize }} take your privacy seriously. To better protect your privacy, {{ iOrWe }}
-								provide this privacy policy notice explaining the way your personal information is
-								collected and used.</p>
-							<p><strong>Collection of Routine Information</strong></p>
-							<p>This website track basic information about its visitors. This information includes, but
-								is not limited to, IP addresses, browser details, timestamps and referring pages. None
-								of this information can personally identify specific visitors to this website. The
-								information is tracked for routine administration and maintenance purposes.</p>
-							<p><strong>Cookies</strong></p>
-							<p>Where necessary, this website uses cookies to store information about a visitor’s
-								preferences and history to better serve the visitor and/or present the visitor with
-								customized content.</p>
-							<p><strong>Advertisement and Other Third Parties</strong></p>
-							<p>Advertising partners and other third parties may use cookies, scripts and/or web beacons
-								to track visitor activities on this website to display advertisements and other useful
-								information. Such tracking is done directly by the third parties through their servers
-								and is subject to their privacy policies. This website has no access or control over
-								these cookies, scripts and/or web beacons that may be used by third parties.</p>
-							<div v-if="hasThirdPartyServicesSelected">
-								<p>{{ iOrWe | capitalize }} have included links on this website for your use and
-									reference. {{ iOrWe | capitalize }} {{ areOrAm }} not responsible for the privacy
-									policies on these websites. You should be aware that the privacy policies of these
-									websites may differ from {{ myOrOur }} own.</p>
-								<p>Link to the privacy policy of third-party service providers used by the website</p>
+							<h2 id="how-do-{{ iOrWe }}-collect-your-data">
+								How do {{ iOrWe }} collect your data?</h2>
+							<div v-if="hasPersonalDataCollectionMethodSelected">
+								<p>{{ iOrWe | capitalize }} collect your personal data using the following methods:</p>
 								<ul>
-									<li v-if="item[item.model] &amp;&amp; item.link.privacy"
-										v-for="item in thirdPartyServices">
-										{{ item.name }} :
-										<ul>
-											<li>
-												<a :href="item.link.privacy" target="_blank"
-													rel="noopener noreferrer">Privacy Policy</a>
-											</li>
-											<li>
-												<a :href="item.link.tos" target="_blank" rel="noopener noreferrer">Terms
-													of Service</a>
-											</li>
-										</ul>
+									<li v-if="item[item.model]" v-for="item in personalDataCollectionMethods">
+										{{ item.name }} - {{ item.description }}
 									</li>
 								</ul>
 							</div>
-							<p><strong>Security</strong></p>
-							<p>The security of your personal information is important to {{ meOrUs }}, but remember that
-								no method of transmission over the Internet, or method of electronic storage, is 100%
-								secure. While {{ iOrWe }} strive to use commercially acceptable means to protect your
-								personal information, {{ iOrWe }} cannot guarantee its absolute security.</p>
-							<p><strong>Changes To This Privacy Policy</strong></p>
-							<p>This Privacy Policy is effective as of {{ effectiveFromDate }} and will remain in effect
-								except concerning any changes in its provisions in the future, which will be in effect
-								immediately after being posted on this page. {{ iOrWe | capitalize }} reserve the right
-								to
-								update or change {{ myOrOur }} Privacy Policy at any time and you should check this
-								Privacy Policy periodically. If {{ iOrWe }} make any material changes to this Privacy
-								Policy, {{ iOrWe }} will notify you either through the email address you have provided
-								{{ meOrUs }} or by placing a prominent notice on {{ myOrOur }} website.</p>
-							<p><strong>Contact Information</strong></p>
-							<p>For any questions or concerns regarding the privacy policy, please send {{ meOrUs }} an
-								email at <a :href="'mailto:' + email">{{ email }}</a>.</p>
-							<p>{{ companyAddIn }}</p>
+							<div v-else>
+								<p>{{ iOrWe | capitalize }} do not collect any of your personal data.</p>
+							</div>
+
+							<h2 id="how-will-{{ iOrWe }}-use-your-data">How will {{ iOrWe }} use your data?</h2>
+							<div v-if="hasPersonalDataUsageSelected">
+								<p>{{ iOrWe | capitalize }} collects your data so that {{ iOrWe }} can:</p>
+								<ul>
+									<li v-if="item[item.model]" v-for="item in personalDataUsage">{{ item.name }}</li>
+								</ul>
+								<p v-if="hasThirdPartyServicesSelected">If you agree, {{ iOrWe }} will share your data
+									with our partner companies so that
+									they
+									may
+									offer you their products and services.</p>
+								<ul v-if="hasThirdPartyServicesSelected">
+									<ul v-if="item[item.model] &amp;&amp; item.link.privacy &amp;&amp; item.link.tos"
+										v-for="item in thirdPartyServices">
+										<li>
+											<a :href="item.link.privacy" target="_blank"
+												rel="noopener noreferrer">Privacy
+												Policy</a>
+										</li>
+										<li>
+											<a :href="item.link.tos" target="_blank" rel="noopener noreferrer">Terms of
+												Service</a>
+										</li>
+									</ul>
+								</ul>
+								<p>When {{ iOrWe }} processes your order, it may send your data to, and also use the
+									resulting
+									information from, credit reference agencies to prevent fraudulent purchases.</p>
+							</div>
+							<div v-else>
+								<p>{{ iOrWe | capitalize }} do not use or share any of your personal data.</p>
+							</div>
+
+							<h2 id="how-do-{{ iOrWe }}-store-your-data">How do {{ iOrWe }} store your data?</h2>
+							<div>
+								<p>{{ iOrWe | capitalize }} securely stores your data at [enter the location and
+									describe
+									security precautions taken].</p>
+								<p>{{ iOrWe | capitalize }} will keep your [enter type of data] for [enter time period].
+									Once
+									this time period has expired, {{ iOrWe }} will delete your data by [enter how you
+									delete
+									users’
+									data].</p>
+							</div>
+
+							<h2 id="marketing">Marketing</h2>
+							<div>
+								<p>{{ iOrWe | capitalize }} would like to send you information about products and
+									services
+									of
+									ours that {{ iOrWe }} think you might like, as well as those of our partner
+									companies.</p>
+								<ul>
+									<li>[List organizations that will receive data]</li>
+								</ul>
+								<p>If you have agreed to receive marketing, you may always opt out at a later date.</p>
+								<p>You have the right at any time to stop {{ usOrMe }} from contacting you for marketing
+									purposes.</p>
+								<p>If you no longer wish to be contacted for marketing purposes, please <a
+										href="https://example.com">click here</a>.</p>
+							</div>
+
+							<h2 id="what-are-your-data-protection-rights">What are your data protection rights?</h2>
+							<div>
+								<p>{{ iOrWe | capitalize }} would like to make sure you are fully aware of all of your
+									data
+									protection rights. Every user is entitled to the following:</p>
+								<p><strong>The right to access</strong> – You have the right to ask {{ usOrMe }} for
+									copies
+									of
+									your personal data. We may charge you a small fee for this service.</p>
+								<p><strong>The right to rectification</strong> – You have the right to ask {{ usOrMe }}
+									to
+									correct any information you believe is inaccurate. You also have the right to
+									request
+									Our Company to complete the information you believe is incomplete.</p>
+								<p><strong>The right to erasure</strong> – You have the right to ask {{ usOrMe }} for
+									erase
+									your personal data, under certain conditions.</p>
+								<p><strong>The right to restrict processing</strong> – You have the right to ask {{
+									usOrMe
+									}}
+									for restrict the processing of your personal data, under certain conditions.</p>
+								<p><strong>The right to object to processing</strong> – You have the right to object to
+									the
+									processing of your personal data by {{ usOrMe }}, under certain conditions.</p>
+								<p><strong>The right to data portability</strong> – You have the right to ask {{ usOrMe
+									}}
+									to
+									transfer the data {{ iOrWe }} have collected to another organization, or directly to
+									you,
+									under
+									certain conditions.</p>
+								<p>If you make a request, {{ iOrWe }} have one month to respond to you. If you would
+									like to
+									exercise any of these rights, please contact {{ usOrMe }} at:</p>
+								<p>Email: {{ email }}</p>
+								<p>{{ phoneIn }}</p>
+								<p>{{ companyAddIn }}</p>
+							</div>
+
+							<h2 id="what-are-cookies">What are cookies?</h2>
+							<div>
+								<p>Cookies are text files placed on your computer to collect standard Internet log
+									information and visitor behavior information. When you visit {{ myOrOur }} website,
+									{{ iOrWe }}
+									may
+									collect information from you automatically through cookies or similar technology</p>
+								<p>For further information, visit <a
+										href="https://allaboutcookies.org">allaboutcookies.org</a>.</p>
+							</div>
+
+							<h2 id="how-do-{{ iOrWe }}-use-cookies">How do {{ iOrWe }} use cookies?</h2>
+							<div>
+								<p>We uses cookies in a range of ways to improve your experience on our website,
+									including:
+								</p>
+								<ul>
+									<li>Keeping you signed in</li>
+									<li>Understanding how you use our website</li>
+									<li>[Add any uses your company has for cookies]</li>
+								</ul>
+							</div>
+
+							<h2 id="what-types-of-cookies-do-{{ iOrWe }}-use">What types of cookies do {{ iOrWe }}
+								use?</h2>
+							<div>
+								<p>There are a number of different types of cookies, however, our website uses:</p>
+								<ul>
+									<li>Functionality – We uses these cookies so that {{ iOrWe }} recognize you on our
+										website
+										and
+										remember your previously selected preferences. These could include what language
+										you
+										prefer and location you are in. A mix of first-party and third-party cookies are
+										used.</li>
+									<li>Advertising – We uses these cookies to collect information about your visit to
+										our
+										website, the content you viewed, the links you followed and information about
+										your
+										browser, device, and your IP address. Sometimes {{ iOrWe }} shares some limited
+										aspects of this data with third parties for advertising purposes. {{ iOrWe |
+										capitalize }} may also share online data collected through cookies with our
+										advertising partners. This means that when you visit another website, you may be
+										shown advertising based on your browsing patterns on our website.</li>
+									<li>[Add any other types of cookies your company uses]</li>
+								</ul>
+							</div>
+
+							<h2 id="how-to-manage-cookies">How to manage cookies</h2>
+							<div>
+								<p>You can set your browser not to accept cookies, and the above website tells you how
+									to
+									remove cookies from your browser. However, in a few cases, some of our website
+									features
+									may not function as a result.</p>
+							</div>
+
+							<h2 id="privacy-policies-of-other-websites">Privacy policies of other websites</h2>
+							<div>
+								<p>{{ devOrCompanyName }} website contains links to other websites. {{ myOrOur |
+									capitalize
+									}}
+									privacy policy applies only to {{ myOrOur }} website, so if you click on a link to
+									another
+									website, you should read their privacy policy.</p>
+							</div>
+
+							<h2 id="changes-to-our-privacy-policy">Changes to our privacy policy</h2>
+							<div>
+								<p>{{ iOrWe | capitalize }} keeps its privacy policy under regular review and places any
+									updates on this web page. This privacy policy was last updated on
+									<em><b>{{ effectiveFromDate }}</b></em>.
+								</p>
+							</div>
+
+							<h2 id="how-to-contact-{{ meOrUs }}">How to contact {{ meOrUs }}</h2>
+							<div>
+								<p>If you have any questions about {{ myOrOur }} privacy policy, the data {{ iOrWe }}
+									hold on
+									you, or
+									you would like to exercise one of your data protection rights, please do not
+									hesitate to
+									contact {{ meOrUs }}.</p>
+								<p>Email {{ meOrUs }} at: {{ email }}</p>
+								<p>{{ phoneIn }}</p>
+								<p>{{ companyAddIn }}</p>
+							</div>
 							<br />
 							<p>This privacy policy page is generated by <a href="https://privacy-builder.vercel.app/"
 									target="_blank" rel="noopener noreferrer">Privacy Builder</a>.</p>
@@ -609,34 +631,36 @@
 						<button class="button is-link" id="copybtn"
 							data-clipboard-target="#privacy_content">Copy</button>
 					</footer>
-				</div>
-			</div>
-			<div class="modal" v-bind:class="{ 'is-active': showDisclaimerModal }">
-				<div class="modal-background"></div>
-				<div class="modal-card">
-					<header class="modal-card-head">
-						<p class="modal-card-title">Disclaimer</p>
-						<button class="delete" aria-label="close" @click="toggleDisclaimerModalVisibility"></button>
-					</header>
-					<section class="modal-card-body">
-						<p>This template for privacy policy is provided on &quot;AS IS&quot; basis, without warranties
-							or conditions of any kind, either expressed or implied. It is intended for you as an
-							inspirational document and you may use it when compiling your own privacy policy. If your
-							website is released under an open source license, you might need to modify the Privacy
-							Policy accordingly. The developer of Privacy Builder does not take any responsibility for
-							the legal consequences associated with the use of this privacy policy and urges you to seek
-							independent legal advice ensuring compliance with all rules applicable for the
-							users/visitors of your website. The developer of Privacy Builder can in no way be found
-							liable for any direct or indirect damage/loss suffered by individual/company due to the use
-							of this document.</p>
 					</section>
-					<footer class="modal-card-foot">
-						<button class="button is-info" aria-label="close"
-							@click="toggleDisclaimerModalVisibility">Ok</button>
-					</footer>
 				</div>
 			</div>
 		</div>
+		<div class="modal" v-bind:class="{ 'is-active': showDisclaimerModal }">
+			<div class="modal-background"></div>
+			<div class="modal-card">
+				<header class="modal-card-head">
+					<p class="modal-card-title">Disclaimer</p>
+					<button class="delete" aria-label="close" @click="toggleDisclaimerModalVisibility"></button>
+				</header>
+				<section class="modal-card-body">
+					<p>This template for privacy policy is provided on &quot;AS IS&quot; basis, without warranties
+						or conditions of any kind, either expressed or implied. It is intended for you as an
+						inspirational document and you may use it when compiling your own privacy policy. If your
+						website is released under an open source license, you might need to modify the Privacy
+						Policy accordingly. The developer of Privacy Builder does not take any responsibility for
+						the legal consequences associated with the use of this privacy policy and urges you to seek
+						independent legal advice ensuring compliance with all rules applicable for the
+						users/visitors of your website. The developer of Privacy Builder can in no way be found
+						liable for any direct or indirect damage/loss suffered by individual/company due to the use
+						of this document.</p>
+				</section>
+				<footer class="modal-card-foot">
+					<button class="button is-info" aria-label="close"
+						@click="toggleDisclaimerModalVisibility">Ok</button>
+				</footer>
+			</div>
+		</div>
+	</div>
 	</div>
 
 	<script src="https://cdn.jsdelivr.net/npm/clipboard/dist/clipboard.min.js"></script>

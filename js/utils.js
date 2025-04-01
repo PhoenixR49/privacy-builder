@@ -28,7 +28,7 @@ function getContent(id) {
 
 function getTitle(id) {
 	const content = document.getElementById(id);
-	const title = content.getElementsByTagName("strong")[0];
+	const title = content.getElementsByTagName("h1")[0];
 	return title.innerHTML;
 }
 
